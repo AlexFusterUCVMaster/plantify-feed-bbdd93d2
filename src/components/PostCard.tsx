@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Heart, MessageCircle, Bookmark, Send, Flower2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,12 @@ const PostCard = ({
   isVerified = false,
   isFollowing = false
 }: PostCardProps) => {
+  const [following, setFollowing] = useState(isFollowing);
+
+  const handleFollowClick = () => {
+    setFollowing(!following);
+  };
+
   return (
     <Card className="overflow-hidden bg-card border-border shadow-md hover:shadow-lg transition-shadow duration-300">
       <div className="p-4 flex items-center gap-3">
@@ -51,13 +58,14 @@ const PostCard = ({
         <Button 
           variant="outline" 
           size="sm" 
+          onClick={handleFollowClick}
           className={`rounded-full px-4 transition-colors ${
-            isFollowing 
+            following 
               ? 'bg-green-500 text-white border-green-500 hover:bg-green-600 hover:border-green-600' 
               : 'border-border hover:bg-green-500 hover:text-white hover:border-green-500'
           }`}
         >
-          {isFollowing ? 'Siguiendo' : 'Seguir'}
+          {following ? 'Siguiendo' : 'Seguir'}
         </Button>
       </div>
 
