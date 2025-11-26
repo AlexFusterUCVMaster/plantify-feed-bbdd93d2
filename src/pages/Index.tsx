@@ -40,6 +40,7 @@ const mockPosts = [
     comments: 31,
     shares: 15,
     hasStory: true,
+    isFollowing: true,
     description: "Mi colección va creciendo poco a poco 🌵 ¿Cuál es vuestra favorita?"
   },
   {
@@ -75,6 +76,7 @@ const mockPosts = [
     likes: 278,
     comments: 20,
     shares: 11,
+    isFollowing: true,
     description: "Tres meses para que floreciera y valió la pena! 🌸"
   },
   {
