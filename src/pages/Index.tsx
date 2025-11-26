@@ -14,6 +14,7 @@ const mockPosts = [
     plantImage: plant1,
     likes: 234,
     comments: 18,
+    shares: 12,
     description: "¡Mi monstera finalmente tiene una hoja nueva! 🌿 Estoy tan emocionada"
   },
   {
@@ -24,6 +25,7 @@ const mockPosts = [
     plantImage: plant2,
     likes: 189,
     comments: 24,
+    shares: 8,
     description: "Las flores de mi pothos son preciosas esta temporada 💕"
   },
   {
@@ -34,6 +36,7 @@ const mockPosts = [
     plantImage: plant3,
     likes: 312,
     comments: 31,
+    shares: 15,
     description: "Mi colección va creciendo poco a poco 🌵 ¿Cuál es vuestra favorita?"
   },
   {
@@ -44,6 +47,7 @@ const mockPosts = [
     plantImage: plant4,
     likes: 421,
     comments: 45,
+    shares: 23,
     description: "Mi ficus está alcanzando el techo! 🌳 Consejos para podarlo?"
   },
   {
@@ -54,6 +58,7 @@ const mockPosts = [
     plantImage: plant1,
     likes: 156,
     comments: 12,
+    shares: 6,
     description: "Las rayas rosas son perfectas 🎨 Me encanta como se ve con luz natural"
   },
   {
@@ -64,6 +69,7 @@ const mockPosts = [
     plantImage: plant2,
     likes: 278,
     comments: 20,
+    shares: 11,
     description: "Tres meses para que floreciera y valió la pena! 🌸"
   },
   {
@@ -74,6 +80,7 @@ const mockPosts = [
     plantImage: plant3,
     likes: 195,
     comments: 16,
+    shares: 9,
     description: "Los colores pastel de esta suculenta son un sueño 💜"
   },
   {
@@ -84,6 +91,7 @@ const mockPosts = [
     plantImage: plant4,
     likes: 342,
     comments: 28,
+    shares: 18,
     description: "Hojas tan brillantes que parecen de plástico! ✨ Pero son 100% reales"
   },
   {
@@ -94,6 +102,7 @@ const mockPosts = [
     plantImage: plant1,
     likes: 267,
     comments: 22,
+    shares: 14,
     description: "El variegado amarillo está increíble este año 💛🌿"
   }
 ];
