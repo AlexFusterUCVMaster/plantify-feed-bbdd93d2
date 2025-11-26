@@ -1,4 +1,4 @@
-import { Heart, MessageCircle, Bookmark } from "lucide-react";
+import { Heart, MessageCircle, Bookmark, Send } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -10,6 +10,7 @@ interface PostCardProps {
   plantImage: string;
   likes: number;
   comments: number;
+  shares: number;
   description: string;
 }
 
@@ -20,6 +21,7 @@ const PostCard = ({
   plantImage, 
   likes, 
   comments, 
+  shares,
   description 
 }: PostCardProps) => {
   return (
@@ -52,6 +54,10 @@ const PostCard = ({
           <Button variant="ghost" size="sm" className="gap-2 text-foreground hover:text-primary">
             <MessageCircle className="w-5 h-5" />
             <span className="text-sm font-medium">{comments}</span>
+          </Button>
+          <Button variant="ghost" size="sm" className="gap-2 text-foreground hover:text-primary">
+            <Send className="w-5 h-5" />
+            <span className="text-sm font-medium">{shares}</span>
           </Button>
           <Button variant="ghost" size="sm" className="ml-auto text-foreground hover:text-primary">
             <Bookmark className="w-5 h-5" />
