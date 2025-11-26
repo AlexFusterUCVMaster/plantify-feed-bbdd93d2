@@ -3,8 +3,10 @@ import { Heart, MessageCircle, Bookmark, Send, Flower2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 interface PostCardProps {
+  id: number;
   username: string;
   userAvatar: string;
   plantName: string;
@@ -19,6 +21,7 @@ interface PostCardProps {
 }
 
 const PostCard = ({ 
+  id,
   username, 
   userAvatar, 
   plantName, 
@@ -31,10 +34,15 @@ const PostCard = ({
   isVerified = false,
   isFollowing = false
 }: PostCardProps) => {
+  const navigate = useNavigate();
   const [following, setFollowing] = useState(isFollowing);
 
   const handleFollowClick = () => {
     setFollowing(!following);
+  };
+
+  const handleImageClick = () => {
+    navigate(`/post/${id}`);
   };
 
   return (
@@ -69,7 +77,10 @@ const PostCard = ({
         </Button>
       </div>
 
-      <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+      <div 
+        className="relative aspect-[4/3] overflow-hidden bg-muted cursor-pointer"
+        onClick={handleImageClick}
+      >
         <img 
           src={plantImage} 
           alt={plantName}
