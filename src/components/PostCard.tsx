@@ -14,6 +14,7 @@ interface PostCardProps {
   description: string;
   hasStory?: boolean;
   isVerified?: boolean;
+  isFollowing?: boolean;
 }
 
 const PostCard = ({ 
@@ -26,7 +27,8 @@ const PostCard = ({
   shares,
   description,
   hasStory = false,
-  isVerified = false
+  isVerified = false,
+  isFollowing = false
 }: PostCardProps) => {
   return (
     <Card className="overflow-hidden bg-card border-border shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -46,6 +48,15 @@ const PostCard = ({
           </div>
           <p className="text-xs text-muted-foreground">{plantName}</p>
         </div>
+        {!isFollowing && (
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="rounded-full px-4 border-border hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors"
+          >
+            Seguir
+          </Button>
+        )}
       </div>
 
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
