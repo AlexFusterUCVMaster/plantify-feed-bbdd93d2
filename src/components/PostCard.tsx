@@ -1,4 +1,4 @@
-import { Heart, MessageCircle, Bookmark, Send } from "lucide-react";
+import { Heart, MessageCircle, Bookmark, Send, Flower2 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -13,6 +13,7 @@ interface PostCardProps {
   shares: number;
   description: string;
   hasStory?: boolean;
+  isVerified?: boolean;
 }
 
 const PostCard = ({ 
@@ -24,7 +25,8 @@ const PostCard = ({
   comments, 
   shares,
   description,
-  hasStory = false
+  hasStory = false,
+  isVerified = false
 }: PostCardProps) => {
   return (
     <Card className="overflow-hidden bg-card border-border shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -36,7 +38,12 @@ const PostCard = ({
           </Avatar>
         </div>
         <div className="flex-1">
-          <p className="font-semibold text-foreground text-sm">{username}</p>
+          <div className="flex items-center gap-1">
+            <p className="font-semibold text-foreground text-sm">{username}</p>
+            {isVerified && (
+              <Flower2 className="w-4 h-4 text-primary fill-primary" />
+            )}
+          </div>
           <p className="text-xs text-muted-foreground">{plantName}</p>
         </div>
       </div>
