@@ -12,6 +12,7 @@ interface PostCardProps {
   comments: number;
   shares: number;
   description: string;
+  hasStory?: boolean;
 }
 
 const PostCard = ({ 
@@ -22,15 +23,18 @@ const PostCard = ({
   likes, 
   comments, 
   shares,
-  description 
+  description,
+  hasStory = false
 }: PostCardProps) => {
   return (
     <Card className="overflow-hidden bg-card border-border shadow-md hover:shadow-lg transition-shadow duration-300">
       <div className="p-4 flex items-center gap-3">
-        <Avatar className="w-10 h-10">
-          <AvatarImage src={userAvatar} alt={username} />
-          <AvatarFallback className="bg-primary/10 text-primary">{username[0]}</AvatarFallback>
-        </Avatar>
+        <div className={hasStory ? "rounded-full p-0.5 bg-gradient-to-tr from-green-400 to-green-600" : ""}>
+          <Avatar className={`w-10 h-10 ${hasStory ? "border-2 border-background" : ""}`}>
+            <AvatarImage src={userAvatar} alt={username} />
+            <AvatarFallback className="bg-primary/10 text-primary">{username[0]}</AvatarFallback>
+          </Avatar>
+        </div>
         <div className="flex-1">
           <p className="font-semibold text-foreground text-sm">{username}</p>
           <p className="text-xs text-muted-foreground">{plantName}</p>

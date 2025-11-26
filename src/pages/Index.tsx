@@ -15,6 +15,7 @@ const mockPosts = [
     likes: 234,
     comments: 18,
     shares: 12,
+    hasStory: true,
     description: "¡Mi monstera finalmente tiene una hoja nueva! 🌿 Estoy tan emocionada"
   },
   {
@@ -37,6 +38,7 @@ const mockPosts = [
     likes: 312,
     comments: 31,
     shares: 15,
+    hasStory: true,
     description: "Mi colección va creciendo poco a poco 🌵 ¿Cuál es vuestra favorita?"
   },
   {
@@ -59,6 +61,7 @@ const mockPosts = [
     likes: 156,
     comments: 12,
     shares: 6,
+    hasStory: true,
     description: "Las rayas rosas son perfectas 🎨 Me encanta como se ve con luz natural"
   },
   {
@@ -92,6 +95,7 @@ const mockPosts = [
     likes: 342,
     comments: 28,
     shares: 18,
+    hasStory: true,
     description: "Hojas tan brillantes que parecen de plástico! ✨ Pero son 100% reales"
   },
   {
