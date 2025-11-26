@@ -27,6 +27,7 @@ const mockPosts = [
     likes: 189,
     comments: 24,
     shares: 8,
+    isVerified: true,
     description: "Las flores de mi pothos son preciosas esta temporada 💕"
   },
   {
@@ -50,6 +51,7 @@ const mockPosts = [
     likes: 421,
     comments: 45,
     shares: 23,
+    isVerified: true,
     description: "Mi ficus está alcanzando el techo! 🌳 Consejos para podarlo?"
   },
   {
@@ -84,6 +86,7 @@ const mockPosts = [
     likes: 195,
     comments: 16,
     shares: 9,
+    isVerified: true,
     description: "Los colores pastel de esta suculenta son un sueño 💜"
   },
   {
