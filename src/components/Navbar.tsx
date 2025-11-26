@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { Leaf, Search, Plus, Heart, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import AuthDialog from "./AuthDialog";
 
 const Navbar = () => {
+  const [authDialogOpen, setAuthDialogOpen] = useState(false);
+
   return (
     <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between gap-4">
@@ -28,11 +32,18 @@ const Navbar = () => {
           <Button variant="ghost" size="icon" className="text-foreground">
             <Heart className="w-5 h-5" />
           </Button>
-          <Button variant="ghost" size="icon" className="text-foreground">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-foreground"
+            onClick={() => setAuthDialogOpen(true)}
+          >
             <User className="w-5 h-5" />
           </Button>
         </div>
       </div>
+      
+      <AuthDialog open={authDialogOpen} onOpenChange={setAuthDialogOpen} />
     </nav>
   );
 };
