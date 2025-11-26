@@ -48,15 +48,17 @@ const PostCard = ({
           </div>
           <p className="text-xs text-muted-foreground">{plantName}</p>
         </div>
-        {!isFollowing && (
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="rounded-full px-4 border-border hover:bg-green-500 hover:text-white hover:border-green-500 transition-colors"
-          >
-            Seguir
-          </Button>
-        )}
+        <Button 
+          variant="outline" 
+          size="sm" 
+          className={`rounded-full px-4 transition-colors ${
+            isFollowing 
+              ? 'bg-green-500 text-white border-green-500 hover:bg-green-600 hover:border-green-600' 
+              : 'border-border hover:bg-green-500 hover:text-white hover:border-green-500'
+          }`}
+        >
+          {isFollowing ? 'Siguiendo' : 'Seguir'}
+        </Button>
       </div>
 
       <div className="relative aspect-[4/3] overflow-hidden bg-muted">
