@@ -45,6 +45,56 @@ const mockPosts = [
     likes: 421,
     comments: 45,
     description: "Mi ficus está alcanzando el techo! 🌳 Consejos para podarlo?"
+  },
+  {
+    id: 5,
+    username: "BotanicaMaria",
+    userAvatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Maria",
+    plantName: "Calathea Ornata",
+    plantImage: plant1,
+    likes: 156,
+    comments: 12,
+    description: "Las rayas rosas son perfectas 🎨 Me encanta como se ve con luz natural"
+  },
+  {
+    id: 6,
+    username: "PlantDad_Luis",
+    userAvatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Luis",
+    plantName: "Orquídea Phalaenopsis",
+    plantImage: plant2,
+    likes: 278,
+    comments: 20,
+    description: "Tres meses para que floreciera y valió la pena! 🌸"
+  },
+  {
+    id: 7,
+    username: "CactusQueen",
+    userAvatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Sofia",
+    plantName: "Echeveria Lola",
+    plantImage: plant3,
+    likes: 195,
+    comments: 16,
+    description: "Los colores pastel de esta suculenta son un sueño 💜"
+  },
+  {
+    id: 8,
+    username: "TropicalPedro",
+    userAvatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Pedro",
+    plantName: "Alocasia Amazónica",
+    plantImage: plant4,
+    likes: 342,
+    comments: 28,
+    description: "Hojas tan brillantes que parecen de plástico! ✨ Pero son 100% reales"
+  },
+  {
+    id: 9,
+    username: "GardenLover_Elena",
+    userAvatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Elena",
+    plantName: "Philodendron Brasil",
+    plantImage: plant1,
+    likes: 267,
+    comments: 22,
+    description: "El variegado amarillo está increíble este año 💛🌿"
   }
 ];
 
