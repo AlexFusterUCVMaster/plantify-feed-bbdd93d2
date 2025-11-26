@@ -1,6 +1,5 @@
 import Navbar from "@/components/Navbar";
 import PostCard from "@/components/PostCard";
-import PostCardGrid from "@/components/PostCardGrid";
 import plant1 from "@/assets/plant1.jpg";
 import plant2 from "@/assets/plant2.jpg";
 import plant3 from "@/assets/plant3.jpg";
@@ -55,21 +54,17 @@ const Index = () => {
       <Navbar />
       
       <main className="container mx-auto px-4 py-8">
-        {/* Vista móvil - Cards completas */}
+        {/* Vista móvil - Cards completas en columna */}
         <div className="max-w-2xl mx-auto space-y-6 md:hidden">
           {mockPosts.map((post) => (
             <PostCard key={post.id} {...post} />
           ))}
         </div>
 
-        {/* Vista desktop - Cuadrícula 3x3 */}
-        <div className="hidden md:grid grid-cols-3 gap-4 max-w-4xl mx-auto">
+        {/* Vista desktop - Cuadrícula 3x3 de posts completos */}
+        <div className="hidden md:grid grid-cols-3 gap-6 max-w-7xl mx-auto">
           {mockPosts.map((post) => (
-            <PostCardGrid 
-              key={post.id} 
-              plantName={post.plantName}
-              plantImage={post.plantImage}
-            />
+            <PostCard key={post.id} {...post} />
           ))}
         </div>
       </main>
