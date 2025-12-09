@@ -16,19 +16,6 @@ export interface Post {
   isFollowing?: boolean;
 }
 
-// Import images statically for posts that use local assets
-import plant1 from "@/assets/plant1.jpg";
-import plant2 from "@/assets/plant2.jpg";
-import plant3 from "@/assets/plant3.jpg";
-import plant4 from "@/assets/plant4.jpg";
-
-const imageMap: Record<string, string> = {
-  '/src/assets/plant1.jpg': plant1,
-  '/src/assets/plant2.jpg': plant2,
-  '/src/assets/plant3.jpg': plant3,
-  '/src/assets/plant4.jpg': plant4,
-};
-
 const fetchPosts = async (): Promise<Post[]> => {
   const { data: posts, error } = await supabase
     .from('posts')
@@ -52,7 +39,7 @@ const fetchPosts = async (): Promise<Post[]> => {
         username: post.username || 'Anonymous',
         userAvatar: post.user_avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=default',
         plantName: post.plant_name,
-        plantImage: imageMap[post.plant_image] || post.plant_image,
+        plantImage: post.plant_image,
         likes: likesResult.count || 0,
         comments: commentsResult.count || 0,
         shares: 0,
