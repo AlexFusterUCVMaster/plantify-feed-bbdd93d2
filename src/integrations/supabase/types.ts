@@ -130,28 +130,37 @@ export type Database = {
           created_at: string
           description: string | null
           id: string
+          is_verified: boolean | null
           plant_image: string
           plant_name: string
           updated_at: string
-          user_id: string
+          user_avatar: string | null
+          user_id: string | null
+          username: string | null
         }
         Insert: {
           created_at?: string
           description?: string | null
           id?: string
+          is_verified?: boolean | null
           plant_image: string
           plant_name: string
           updated_at?: string
-          user_id: string
+          user_avatar?: string | null
+          user_id?: string | null
+          username?: string | null
         }
         Update: {
           created_at?: string
           description?: string | null
           id?: string
+          is_verified?: boolean | null
           plant_image?: string
           plant_name?: string
           updated_at?: string
-          user_id?: string
+          user_avatar?: string | null
+          user_id?: string | null
+          username?: string | null
         }
         Relationships: [
           {
