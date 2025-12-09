@@ -36,9 +36,16 @@ const PostCard = ({
 }: PostCardProps) => {
   const navigate = useNavigate();
   const [following, setFollowing] = useState(isFollowing);
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(likes);
 
   const handleFollowClick = () => {
     setFollowing(!following);
+  };
+
+  const handleLikeClick = () => {
+    setLiked(!liked);
+    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
   };
 
   const handleImageClick = () => {
@@ -90,9 +97,14 @@ const PostCard = ({
 
       <div className="p-4 space-y-3">
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" className="gap-2 text-foreground hover:text-primary">
-            <Heart className="w-5 h-5" />
-            <span className="text-sm font-medium">{likes}</span>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className={`gap-2 hover:text-primary ${liked ? 'text-green-500' : 'text-foreground'}`}
+            onClick={handleLikeClick}
+          >
+            <Heart className={`w-5 h-5 transition-all ${liked ? 'fill-green-500 text-green-500' : ''}`} />
+            <span className="text-sm font-medium">{likeCount}</span>
           </Button>
           <Button variant="ghost" size="sm" className="gap-2 text-foreground hover:text-primary">
             <MessageCircle className="w-5 h-5" />
