@@ -2,3 +2,6 @@ project_id = "jrpwbnqbeqspzcoxhykt"
 
 [functions.upload-demo-images]
 verify_jwt = false
+
+[functions.describe-plant-image]
+verify_jwt = true

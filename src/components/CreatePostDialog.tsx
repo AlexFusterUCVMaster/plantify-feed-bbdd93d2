@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
-import { Loader2, Upload, X, ImagePlus } from "lucide-react";
+import { Loader2, Upload, X, ImagePlus, Sparkles } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 
 interface CreatePostDialogProps {
@@ -25,6 +25,7 @@ const CreatePostDialog = ({ open, onOpenChange }: CreatePostDialogProps) => {
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isGeneratingDescription, setIsGeneratingDescription] = useState(false);
 
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -53,6 +54,37 @@ const CreatePostDialog = ({ open, onOpenChange }: CreatePostDialogProps) => {
     setImagePreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = "";
+    }
+  };
+
+  const generateDescription = async () => {
+    if (!imagePreview) {
+      toast.error("Primero selecciona una imagen");
+      return;
+    }
+
+    setIsGeneratingDescription(true);
+    
+    try {
+      const { data, error } = await supabase.functions.invoke("describe-plant-image", {
+        body: { imageBase64: imagePreview },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      if (data?.description) {
+        setDescription(data.description);
+        toast.success("¡Descripción generada!");
+      } else if (data?.error) {
+        toast.error(data.error);
+      }
+    } catch (error) {
+      console.error("Error generating description:", error);
+      toast.error("Error al generar la descripción");
+    } finally {
+      setIsGeneratingDescription(false);
     }
   };
 
@@ -205,13 +237,35 @@ const CreatePostDialog = ({ open, onOpenChange }: CreatePostDialogProps) => {
 
           {/* Description */}
           <div className="space-y-2">
-            <Label htmlFor="description">Descripción (opcional)</Label>
+            <div className="flex items-center justify-between">
+              <Label htmlFor="description">Descripción (opcional)</Label>
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                onClick={generateDescription}
+                disabled={!imagePreview || isGeneratingDescription || isLoading}
+                className="gap-1 text-xs"
+              >
+                {isGeneratingDescription ? (
+                  <>
+                    <Loader2 className="h-3 w-3 animate-spin" />
+                    Generando...
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="h-3 w-3" />
+                    Generar con IA
+                  </>
+                )}
+              </Button>
+            </div>
             <Textarea
               id="description"
               placeholder="Cuéntanos sobre tu planta..."
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              disabled={isLoading}
+              disabled={isLoading || isGeneratingDescription}
               maxLength={500}
               rows={3}
             />
