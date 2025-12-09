@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
 interface PostCardProps {
-  id: number;
+  id: string;
   username: string;
   userAvatar: string;
   plantName: string;
