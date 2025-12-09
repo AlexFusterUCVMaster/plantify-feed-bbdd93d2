@@ -11,11 +11,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import AuthDialog from "./AuthDialog";
+import CreatePostDialog from "./CreatePostDialog";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
 const Navbar = () => {
   const [authDialogOpen, setAuthDialogOpen] = useState(false);
+  const [createPostDialogOpen, setCreatePostDialogOpen] = useState(false);
   const { user, signOut, loading } = useAuth();
 
   const handleSignOut = async () => {
@@ -25,6 +27,15 @@ const Navbar = () => {
       return;
     }
     toast.success("Sesión cerrada");
+  };
+
+  const handleCreatePost = () => {
+    if (!user) {
+      toast.error("Inicia sesión para crear un post");
+      setAuthDialogOpen(true);
+      return;
+    }
+    setCreatePostDialogOpen(true);
   };
 
   const userInitial = user?.user_metadata?.username?.[0]?.toUpperCase() || user?.email?.[0]?.toUpperCase() || "U";
@@ -49,7 +60,12 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="text-foreground">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="text-foreground"
+            onClick={handleCreatePost}
+          >
             <Plus className="w-5 h-5" />
           </Button>
           <Button variant="ghost" size="icon" className="text-foreground">
@@ -94,6 +110,7 @@ const Navbar = () => {
       </div>
       
       <AuthDialog open={authDialogOpen} onOpenChange={setAuthDialogOpen} />
+      <CreatePostDialog open={createPostDialogOpen} onOpenChange={setCreatePostDialogOpen} />
     </nav>
   );
 };
