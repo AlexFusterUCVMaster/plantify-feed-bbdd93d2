@@ -8,18 +8,6 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import plant1 from "@/assets/plant1.jpg";
-import plant2 from "@/assets/plant2.jpg";
-import plant3 from "@/assets/plant3.jpg";
-import plant4 from "@/assets/plant4.jpg";
-
-const imageMap: Record<string, string> = {
-  '/src/assets/plant1.jpg': plant1,
-  '/src/assets/plant2.jpg': plant2,
-  '/src/assets/plant3.jpg': plant3,
-  '/src/assets/plant4.jpg': plant4,
-};
-
 const PostDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -46,7 +34,7 @@ const PostDetail = () => {
 
       return {
         ...data,
-        plantImage: imageMap[data.plant_image] || data.plant_image,
+        plantImage: data.plant_image,
         likes: likesResult.count || 0,
         comments: commentsResult.data || [],
         commentsCount: commentsResult.data?.length || 0,
