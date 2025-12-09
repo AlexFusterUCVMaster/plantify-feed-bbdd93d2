@@ -38,6 +38,7 @@ const PostCard = ({
   const [following, setFollowing] = useState(isFollowing);
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
+  const [saved, setSaved] = useState(false);
 
   const handleFollowClick = () => {
     setFollowing(!following);
@@ -114,8 +115,13 @@ const PostCard = ({
             <Send className="w-5 h-5" />
             <span className="text-sm font-medium">{shares}</span>
           </Button>
-          <Button variant="ghost" size="sm" className="ml-auto text-foreground hover:text-primary">
-            <Bookmark className="w-5 h-5" />
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className={`ml-auto hover:text-primary ${saved ? 'text-green-500' : 'text-foreground'}`}
+            onClick={() => setSaved(!saved)}
+          >
+            <Bookmark className={`w-5 h-5 transition-all ${saved ? 'fill-green-500 text-green-500' : ''}`} />
           </Button>
         </div>
 
